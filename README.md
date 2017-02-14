@@ -16,3 +16,13 @@ Type in the number?
 Keep printing 'Type in the number?' until the user selects a value in the proper range (e.g. 0-2 in this case).
 
 Once user select a folder, print out the suffix of that folder (with prefix as 'sim'), e.g. if 'simA' is selected, then print out 'A', and exit the script.
+
+<b>Instruction:</b>
+
+I provided a folder hierarchy for testing (targetA.zip).
+
+How to run script:
+
+Step 1: cd to working directory
+
+Step 2: ./simsearch.sh pathto/targetA
