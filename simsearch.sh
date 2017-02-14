@@ -18,7 +18,7 @@ while read -r folder; do
     array=("${array[@]}" "$folder")
     #number of elements
     ((length++))
-done < <(find "$1" -type d -name "sim*")
+done < <(find "$1" -type d -name "sim*" | sort)
 
 #trim path and display array
 echo $selectMsg
