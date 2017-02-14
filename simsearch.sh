@@ -4,7 +4,7 @@
 array=()
 length=0
 selectMsg="Please select one of this:"
-quitMsg="Thank you!"
+errorMsg="Bad input! Please try again..."
 
 #find folders and fill results in array
 while read -r folder; do
@@ -33,13 +33,15 @@ do
     #validate
     if [[ "$choice" =~ ^[0-9]+$ ]]; then     #if it is a non-negative int
         if [ "$choice" -ge "$length" ]; then #if it is out of range
-            echo $quitMsg && exit 1;
+            echo $errorMsg;
+        else
+            #get the suffix and display
+            prefix="${array[choice]}"
+            suffix="${prefix##*/sim}"
+            echo $suffix
+            exit 0; #Done! Exit script.
         fi
-        #get the suffix and display
-        prefix="${array[choice]}"
-        suffix="${prefix##*/sim}"
-        echo $suffix
     else #if it is a negative int or char
-        echo $quitMsg && exit 1;
+        echo $errorMsg;
     fi
 done
