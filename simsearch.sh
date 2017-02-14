@@ -6,6 +6,12 @@ length=0
 selectMsg="Please select one of this:"
 errorMsg="Bad input! Please try again..."
 
+#check if the argument is a valid directory
+if ! [[ -d ${!#} ]]; then
+    echo "Invalid argument!"
+    exit 1;
+fi
+
 #find folders and fill results in array
 while read -r folder; do
     #add to array
@@ -20,7 +26,7 @@ for i in "${!array[@]}"; do
     #full path to folder
     path="${array[$i]}"
     #truncate path
-    truncated_path="${path##"$1"}"
+    truncated_path=.../"${path##"$1"/}"
     #print index + truncated path
     printf "%s %s\n" "$i" "$truncated_path"
 done
