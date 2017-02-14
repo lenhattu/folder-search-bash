@@ -18,5 +18,5 @@ read -p "Enter the number: " choice
 
 #get the suffix and display
 prefix="${array[choice]}"
-suffix="${p##*/sim}"
+suffix="${prefix##*/sim}"
 echo $suffix
