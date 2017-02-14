@@ -6,11 +6,13 @@ array=()
 #find folders and fill results in array
 while read -r folder; do
     array=("${array[@]}" "$folder")
-done < <(find /Users/tule/Dropbox/Research/Bioinformatics/Practice/targetA -type d -name "sim*") 
+done < <(find "$1" -type d -name "sim*") 
 
-#display array
+#trim path and display array
 for i in "${!array[@]}"; do
-    printf "%s %s\n" "$i" "${array[$i]}"
+    path="${array[$i]}"
+    truncated_path="${path##"$1"}"
+    printf "%s %s\n" "$i" "$truncated_path"
 done
 
 #user choice
